@@ -1,0 +1,57 @@
+/* ============================================================
+   animations.css — keyframes, reveal states, micro interactions
+   ============================================================ */
+
+@keyframes frondPulse{
+  0%,100%{ transform: scale(1); opacity:0.9; }
+  50%{ transform: scale(1.08); opacity:1; }
+}
+
+@keyframes scrollLine{
+  0%{ top:-100%; }
+  60%{ top:100%; }
+  100%{ top:100%; }
+}
+
+@keyframes fadeUp{
+  from{ opacity:0; transform: translateY(28px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+@keyframes fadeIn{
+  from{ opacity:0; }
+  to{ opacity:1; }
+}
+
+/* Scroll reveal — toggled via IntersectionObserver in animations.js */
+[data-reveal]{
+  opacity:0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  transition-delay: var(--reveal-delay, 0s);
+}
+[data-reveal].is-visible{
+  opacity:1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce){
+  [data-reveal]{ opacity:1; transform:none; transition:none; }
+}
+
+/* hover lift utility */
+.lift-on-hover{ transition: transform 0.4s var(--ease); }
+.lift-on-hover:hover{ transform: translateY(-4px); }
+
+/* chat bubble entrance */
+.chat-bubble{ animation: fadeUp 0.35s var(--ease); }
+
+/* lightbox stage fade */
+.lightbox__stage img, .lightbox__stage video{ animation: fadeIn 0.4s var(--ease); }
+
+/* nav menu mobile slide */
+@media (max-width: 980px){
+  .nav__menu{
+    transition: max-height 0.45s var(--ease), opacity 0.35s var(--ease);
+  }
+}

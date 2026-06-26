@@ -1,0 +1,42 @@
+/* ============================================================
+   components.css — small reusable / stateful UI pieces
+   ============================================================ */
+
+.nav__toggle{ z-index:2; }
+
+@media (max-width: 980px){
+  .nav__toggle{ display:flex; }
+
+  .nav__menu{
+    position:fixed; top: var(--header-h); left:0; right:0; margin:0 1rem;
+    background: rgba(250,246,239,0.97); backdrop-filter: blur(20px);
+    border-radius: var(--radius-lg); border:1px solid rgba(255,255,255,0.6);
+    flex-direction:column; align-items:flex-start; gap:0; padding:0.5rem 0;
+    max-height:0; overflow:hidden; opacity:0; box-shadow: var(--shadow-soft);
+  }
+  .nav__menu.is-open{ max-height:80vh; opacity:1; overflow-y:auto; }
+  .nav__menu li{ width:100%; }
+  .nav__menu li a{ display:block; padding:0.95rem 1.4rem; color: var(--ink) !important; width:100%; }
+  .nav__cta{ padding:0.8rem 1.4rem 1rem; }
+  .nav__cta a{ display:block; text-align:center; }
+
+  .nav__toggle.is-active span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+  .nav__toggle.is-active span:nth-child(2){ opacity:0; }
+  .nav__toggle.is-active span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+}
+
+/* Toast-like status pill for form */
+.contact__status.is-success{ color:#7FD9A8; }
+.contact__status.is-error{ color:#E2A07E; }
+
+/* Disabled submit state */
+.btn[disabled]{ opacity:0.6; cursor:not-allowed; transform:none !important; }
+
+/* Coming soon ribbon reuse */
+.explore-card__tag{ display:inline-block; }
+
+/* Video sound toggle active state */
+.video-sound-toggle.is-on svg path{ }
+
+/* Masonry video play icon hides on hover handled in JS by class */
+.masonry__item.is-playing .masonry__play{ opacity:0; }
